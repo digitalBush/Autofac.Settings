@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autofac.Settings", "src\Autofac.Settings\Autofac.Settings.csproj", "{EF1587DD-B120-4D3F-ADAD-F54243C97730}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autofac.Settings.Specs", "specs\Autofac.Settings.Specs\Autofac.Settings.Specs.csproj", "{A20C6CAC-A71B-4862-B8BD-046A21964FAC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EF1587DD-B120-4D3F-ADAD-F54243C97730}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF1587DD-B120-4D3F-ADAD-F54243C97730}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF1587DD-B120-4D3F-ADAD-F54243C97730}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF1587DD-B120-4D3F-ADAD-F54243C97730}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A20C6CAC-A71B-4862-B8BD-046A21964FAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A20C6CAC-A71B-4862-B8BD-046A21964FAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A20C6CAC-A71B-4862-B8BD-046A21964FAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A20C6CAC-A71B-4862-B8BD-046A21964FAC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
