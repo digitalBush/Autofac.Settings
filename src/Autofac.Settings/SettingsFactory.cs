@@ -44,7 +44,5 @@ namespace Autofac.Settings {
             }
             return propertiesMissed;
         }
-
-
     }
 }
