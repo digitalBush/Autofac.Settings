@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
+using System;
 
 namespace Autofac.Settings {
     public interface ISettingsProvider {
-        IEnumerable<string> Touch(object obj);
+        object ProvideValueFor(Type type,string propertyName);
     }
 }

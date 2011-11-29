@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Reflection;
+using System.ComponentModel;
 
 namespace Autofac.Settings {
     public class SettingsFactory : ISettingsFactory {
@@ -14,27 +15,36 @@ namespace Autofac.Settings {
 
         public object Create(Type type) {
             var obj = Activator.CreateInstance(type);
-            var propertiesTouched = new HashSet<string>();
-            foreach (var provider in _providers) {
-                var touched = provider.Touch(obj);
-                propertiesTouched.UnionWith(touched);
-            }
-            VerifyAllPropertiesGotTouched(type, propertiesTouched);
-            return obj;
-        }
 
-        static void VerifyAllPropertiesGotTouched(Type type, HashSet<string> properties) {
-            var props = type.GetProperties(BindingFlags.Public | BindingFlags.Instance)
-                .Where(p => p.CanWrite)
-                .Select(p => p.Name)
-                .ToList();
-
-            var propertiesMissed = props.Except(properties);
+            var propertiesMissed = PopulateProperties(type, obj);
 
             if (propertiesMissed.Any()) {
                 var message = String.Format("{0} is missing the following properties in configuration: {1}", type.Name, String.Join(",", propertiesMissed));
                 throw new ConfigurationErrorsException(message);
             }
+
+            return obj;
         }
+
+        private List<string> PopulateProperties(Type type, object obj) {
+            var propertiesMissed = new List<string>();
+
+            var props = type
+                .GetProperties(BindingFlags.Public | BindingFlags.Instance)
+                .Where(p => p.CanWrite);
+
+            foreach (var prop in props) {
+                var value = _providers
+                    .Select(p => p.ProvideValueFor(type, prop.Name))
+                    .FirstOrDefault(p => p != null);
+                if (value != null)
+                    prop.Set(obj, value);
+                else
+                    propertiesMissed.Add(prop.Name);
+            }
+            return propertiesMissed;
+        }
+
+
     }
 }
