@@ -45,6 +45,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppConfigSettingsProvider.cs" />
+    <Compile Include="EnvironmentSettingsProvider.cs" />
+    <Compile Include="KeyedSettingsProviderBase.cs" />
     <Compile Include="PropertyHelper.cs" />
     <Compile Include="SettingsSource.cs" />
     <Compile Include="ISettingsFactory.cs" />
