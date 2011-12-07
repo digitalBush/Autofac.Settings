@@ -13,7 +13,13 @@ FEEDS = [
 	"http://go.microsoft.com/fwlink/?LinkID=206669"
 ]
 
-task :default => :build
+task :default => :all
+
+task :all => [:clean,:dependencies,:build,:specs]
+
+task :clean do
+	rmtree BUILD_PATH
+end
 
 task :dependencies do
 	require 'rexml/document'	
@@ -22,7 +28,7 @@ task :dependencies do
 	doc.elements.each("packages/package") do |elm|
 		package=elm.attributes["id"]
 		version=elm.attributes["version"]
-		
+
 		packagePath="#{LIB_PATH}/#{package}"
 		versionInfo="#{packagePath}/version.info"
 		currentVersion=IO.read(versionInfo) if File.exists?(versionInfo)
@@ -31,18 +37,21 @@ task :dependencies do
 		if(!(version or packageExists) or currentVersion!= version) then
 			feedsArg = FEEDS.map{ |x| "-Source " + x }.join (' ')
 			versionArg = "-Version #{version}" if version
-			sh "#{TOOLS_PATH}/nuget/nuget Install #{package} #{versionArg} -o #{LIB_PATH} #{feedsArg} -ExcludeVersion" do |ok,results|
+			sh "\"#{TOOLS_PATH}/nuget/nuget.exe\" Install #{package} #{versionArg} -o \"#{LIB_PATH}\" #{feedsArg} -ExcludeVersion" do |ok,results|
 				File.open(versionInfo,'w'){|f| f.write(version)} if ok
 			end
 		end
 	end
-	
-	
-		
+end
 
-	
-	#do |elm|		
-	#	puts elm
-	#end
-	
+msbuild :build do |msb|
+	msb.properties :configuration => configuration
+	msb.targets :Clean, :Build
+	msb.verbosity = "minimal"
+	msb.solution = "#{PRODUCT_NAME}.sln"
+end
+
+mspec :specs do |mspec|
+	mspec.command = "lib/Machine.Specifications/tools/mspec-clr4.exe"
+	mspec.assemblies Dir.glob('specs/**/*Specs.dll')
 end

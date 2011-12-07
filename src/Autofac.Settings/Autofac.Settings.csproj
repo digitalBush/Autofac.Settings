@@ -55,7 +55,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="BeforeBuild">
-    <Exec Command="&quot;$(SolutionDir)install-packages.bat&quot;" />
   </Target>
   <Target Name="AfterBuild">
   </Target>
