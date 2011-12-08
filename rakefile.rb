@@ -15,7 +15,7 @@ FEEDS = [
 
 task :default => :all
 
-task :all => [:clean,:dependencies,:build,:specs]
+task :all => [:clean,:dependencies,:build,:specs,:copy]
 
 task :clean do
 	rmtree BUILD_PATH
@@ -44,14 +44,25 @@ task :dependencies do
 	end
 end
 
-msbuild :build do |msb|
+msbuild :build=>[:dependencies] do |msb|
 	msb.properties :configuration => configuration
 	msb.targets :Clean, :Build
 	msb.verbosity = "minimal"
 	msb.solution = "#{PRODUCT_NAME}.sln"
 end
 
-mspec :specs do |mspec|
+mspec :specs => [:build] do |mspec|
 	mspec.command = "lib/Machine.Specifications/tools/mspec-clr4.exe"
 	mspec.assemblies Dir.glob('specs/**/*Specs.dll')
+end
+
+task :copy => [:specs] do
+	Dir.glob("src/**/*.csproj") do |proj|
+		name=File.basename(proj,".csproj")
+		puts "Copying output for #{name}"
+		src=File.dirname(proj)
+		dest = "#{BUILD_PATH}/#{name}/"
+		mkdir_p(dest)
+		cp_r("#{src}/bin/#{configuration}/.",dest)
+	end
 end
