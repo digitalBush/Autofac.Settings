@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Autofac.Settings")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Convention Based Application Settings via Autofac")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("digitalbush.com")]
+[assembly: AssemblyCompany("Josh Bush")]
 [assembly: AssemblyProduct("Autofac.Settings")]
-[assembly: AssemblyCopyright("Copyright © Josh Bush")]
+[assembly: AssemblyCopyright("Copyright © Josh Bush 2011-2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

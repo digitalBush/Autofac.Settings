@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>https://raw.github.com/digitalBush/Autofac.Settings/master/LICENSE.txt</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>Initial Push.</releaseNotes>
+    <copyright>Copyright (c) Josh Bush 2011-2012</copyright>
+    <tags>Autofac Conventions Settings</tags>
+    <dependencies>
+      <dependency id="Autofac" version="2.5.2.830" />
+    </dependencies> 
+  </metadata>
+</package>
