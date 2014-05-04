@@ -60,4 +60,28 @@ namespace Autofac.Settings.Specs {
         It should_return_the_same_instance = () => _settings[0].ShouldBeTheSameAs(_settings[1]);
 
     }
+
+    public class when_resolving_settings_multiple_times_with_an_override
+    {
+
+        static IContainer _container;
+        static IList<FooSettings> _settings;
+
+        Establish context = () =>
+        {
+            var builder = new ContainerBuilder();
+            builder.RegisterSource(new SettingsSource(x=>x.InstancePerDependency()));
+            builder.RegisterType<SettingsFactory>().AsImplementedInterfaces();
+            builder.RegisterType<NameValueSettingsProvider>()
+                .WithParameter("source", new NameValueCollection() { { "FooSettings.Bar", "w00t!" } })
+                .AsImplementedInterfaces();
+            _container = builder.Build();
+        };
+
+        Because of = () => _settings = Enumerable.Range(0, 2).Select(i => _container.Resolve<FooSettings>()).ToList();
+
+        It should_resolve_settings = () => _settings[0].ShouldNotBeNull();
+        It should_not_return_the_same_instance = () => _settings[0].ShouldNotBeTheSameAs(_settings[1]);
+
+    }
 }
