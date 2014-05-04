@@ -4,6 +4,7 @@ reports/
 [Oo]bj/
 TestResults/
 PrecompiledWeb/
+packages/
 src/CommonAssemblyInfo.cs
 artifacts
 lib
