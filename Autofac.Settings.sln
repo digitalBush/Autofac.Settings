@@ -1,11 +1,15 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autofac.Settings", "src\Autofac.Settings\Autofac.Settings.csproj", "{EF1587DD-B120-4D3F-ADAD-F54243C97730}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autofac.Settings.Specs", "specs\Autofac.Settings.Specs\Autofac.Settings.Specs.csproj", "{A20C6CAC-A71B-4862-B8BD-046A21964FAC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo", "src\Demo\Demo.csproj", "{A185899B-12D9-442D-8E50-BB892C366BCC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoModule", "src\DemoModule\DemoModule.csproj", "{AC68BD64-5E98-42BD-9CA1-9B6FAF25D8B3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +51,18 @@ Global
 		{A185899B-12D9-442D-8E50-BB892C366BCC}.Release|Mixed Platforms.Build.0 = Release|x86
 		{A185899B-12D9-442D-8E50-BB892C366BCC}.Release|x86.ActiveCfg = Release|x86
 		{A185899B-12D9-442D-8E50-BB892C366BCC}.Release|x86.Build.0 = Release|x86
+		{AC68BD64-5E98-42BD-9CA1-9B6FAF25D8B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC68BD64-5E98-42BD-9CA1-9B6FAF25D8B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC68BD64-5E98-42BD-9CA1-9B6FAF25D8B3}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{AC68BD64-5E98-42BD-9CA1-9B6FAF25D8B3}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{AC68BD64-5E98-42BD-9CA1-9B6FAF25D8B3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{AC68BD64-5E98-42BD-9CA1-9B6FAF25D8B3}.Debug|x86.Build.0 = Debug|Any CPU
+		{AC68BD64-5E98-42BD-9CA1-9B6FAF25D8B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC68BD64-5E98-42BD-9CA1-9B6FAF25D8B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC68BD64-5E98-42BD-9CA1-9B6FAF25D8B3}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{AC68BD64-5E98-42BD-9CA1-9B6FAF25D8B3}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{AC68BD64-5E98-42BD-9CA1-9B6FAF25D8B3}.Release|x86.ActiveCfg = Release|Any CPU
+		{AC68BD64-5E98-42BD-9CA1-9B6FAF25D8B3}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
