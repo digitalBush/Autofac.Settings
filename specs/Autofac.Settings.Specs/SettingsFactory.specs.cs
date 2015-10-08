@@ -54,7 +54,7 @@ namespace Autofac.Settings.Specs {
 
         Because of = () => _exception=Catch.Exception(()=> _factory.Create(typeof(Settings)));
 
-        It should_throw_configuration_errors_exception = () => _exception.ShouldBeOfType<ConfigurationErrorsException>();
+        It should_throw_configuration_errors_exception = () => _exception.ShouldBeOfExactType<ConfigurationErrorsException>();
         It should_have_exception_message_with_missed_properties = () => _exception.Message.ShouldEndWith("Bar,Baz");
         It should_call_settings_provider = () => _provider.Verify();
 
